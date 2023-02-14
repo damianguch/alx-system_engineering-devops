@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(echo "ibase=water; $WATER + ibase=stir; $STIR" | bc)
+printf "%water + %stir\n" $WATER $STIR
