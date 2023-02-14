@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%water + %stir\n" $WATER $STIR
+printf "%obase=bestchol\n" $((16#${WATER})) + $((16#${STIR}))
