@@ -2,23 +2,13 @@
 # Install nginx on web server with the following configuration:
 # Nginx should be listening on port 80
 # Querying Nginx at its root (/) with a GET request (requesting a page)
-# 	   curl http://3.84.238.117/   --> returns string "Hello World!"
-#	   curl http://3.84.238.117/   --> returns header info
-#+    Returns a page containing "Hello World" when queried
-#++    at the root with a curl GET request.
+# curl http://3.84.238.117/   --> returns string "Hello World!"
+# curl http://3.84.238.117/   --> returns header info
+# Returns a page containing "Hello World" when queried
+# at the root with a curl GET request.
 
 apt-get update
 apt-get install -y nginx
-
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
-echo "Hello Word!" > /etc/nginx/html/index.html
-printf %s "server {
-     listen      80 default_server;
-     listen      [::]:80 default_server;
-     root        /etc/nginx/html;
-     index       index.html index.htm;
-}
-" > /etc/nginx/sites-available/default
-
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo ufw allow 80/tcp
 service nginx restart
